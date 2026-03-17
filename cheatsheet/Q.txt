@@ -1,0 +1,75 @@
+﻿1️⃣ Revenue & Sales Questions (MOST IMPORTANT)
+    • Which product generated the most revenue?
+    • What is the total revenue per product?
+    • What is the total revenue across all orders?
+    • Which products have generated more than 500 in revenue?
+    • Rank products by total revenue in descending order
+    • What is the average revenue per order?
+    • Which product has the lowest total revenue?
+    • What percentage of total revenue comes from the top 3 products?
+
+2️⃣ Orders & Transaction Analysis
+    • How many orders are there in total?
+    • How many orders were placed per product?
+    • Which product has the highest number of orders?
+    • What is the average order value?
+    • List orders along with their payment amounts
+    • Which orders have payments greater than 200?
+    • How many orders have been paid successfully?
+
+3️⃣ Inventory Questions (VERY STABLE)
+    • Which products have inventory less than 10?
+    • Which products are out of stock?
+    • List all products with their current inventory levels
+    • Which product has the highest inventory?
+    • Which products need restocking?
+    • What is the total inventory count across all products?
+
+4️⃣ Customer-Focused Questions
+    • How many customers are there?
+    • List all customers
+    • Which customer placed the most orders?
+    • How many orders did each customer place?
+    • Which customers have placed more than one order?
+    • List customers along with their total spending
+
+5️⃣ Product Catalog Questions
+    • List all products
+    • What are the available products?
+    • Show product names with their prices
+    • Which products cost more than 500?
+    • What is the most expensive product?
+    • What is the cheapest product?
+
+6️⃣ Payment Analysis (GOOD FOR DEMO)
+    • What is the total payment amount?
+    • List all payments
+    • Which order has the highest payment?
+    • What is the average payment amount?
+    • Which payments are linked to which products?
+    • How much revenue was generated from each order?
+
+7️⃣ Combined / Slightly Advanced (Still Safe)
+    • Show products with their total revenue and inventory
+    • Which products have high revenue but low inventory?
+    • Compare inventory levels with sales revenue per product
+    • Which products sell well but have low stock?
+    • Show product name, total orders, and total revenue
+
+8️⃣ Questions to AVOID (Will Break Things)
+Do NOT ask these unless backend is upgraded:
+    • “Why did revenue drop last month?”
+    • “Predict next month’s sales”
+    • “Which product is trending?”
+    • “Explain customer behavior”
+    • “Show revenue growth over time”
+These require time-series, ML, or text analysis you don’t have.
+
+9️⃣ Best Demo Questions (Use These First)
+If this is for review / internship:
+    1. Which product generated the most revenue?
+    2. What is the total revenue per product?
+    3. Which products have inventory less than 10?
+    4. Which customer placed the most orders?
+    5. Show products with their total revenue and inventory
+

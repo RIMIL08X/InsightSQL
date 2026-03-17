@@ -1,0 +1,72 @@
+﻿DB Chatbot – Connection & Query Cheat Sheet
+0️⃣ Prerequisites (one-time)
+    • PostgreSQL service running
+    • Database populated (mydb)
+    • FastAPI server running
+uvicorn main:app --reload
+Server:
+http://127.0.0.1:8000
+
+1️⃣ Database URL format (IMPORTANT)
+postgresql://USERNAME:PASSWORD@HOST:PORT/DATABASE
+Your case:
+postgresql://rimil:241206@localhost:5432/mydb
+
+2️⃣ Connect chatbot to database
+✅ Correct (query parameter)
+curl -X POST "http://127.0.0.1:8000/connect?db_url=postgresql://rimil:241206@localhost:5432/mydb"
+❌ Wrong (JSON body – NOT supported in your app)
+curl -X POST http://127.0.0.1:8000/connect \
+     -H "Content-Type: application/json" \
+     -d '{"db_url":"..."}'
+✅ Expected response
+{
+  "message": "Database connected successfully",
+  "tables": ["customers","orders","products","payments","inventory"]
+}
+
+3️⃣ Ask questions (IMPORTANT PART)
+Your /ask endpoint expects query parameters, and because DB URLs break normal URLs, you MUST use --get + --data-urlencode.
+✅ Correct way (USE THIS ALWAYS)
+curl -X POST "http://127.0.0.1:8000/ask" \
+     --get \
+     --data-urlencode "db_url=postgresql://rimil:241206@localhost:5432/mydb" \
+     --data-urlencode "question=Which product generated the most revenue?"
+
+❌ Will fail (do NOT use)
+curl -X POST "http://127.0.0.1:8000/ask?db_url=...&question=..."
+curl -X POST http://127.0.0.1:8000/ask \
+     -H "Content-Type: application/json" \
+     -d '{"question":"..."}'
+
+4️⃣ Example business questions (copy-paste)
+Total revenue per product
+curl -X POST "http://127.0.0.1:8000/ask" \
+     --get \
+     --data-urlencode "db_url=postgresql://rimil:241206@localhost:5432/mydb" \
+     --data-urlencode "question=Total revenue per product"
+Top 3 customers by orders
+--data-urlencode "question=Top 3 customers by number of orders"
+Products with low inventory
+--data-urlencode "question=Which products have inventory less than 10?"
+Revenue by region
+--data-urlencode "question=Total revenue grouped by customer region"
+
+5️⃣ Response structure (for demo explanation)
+{
+  "question": "...",
+  "generated_sql": "SELECT ...",
+  "result": [
+    { "name": "Smartphone X", "total_revenue": 1400 }
+  ],
+  "explanation": "Business-level explanation of the result"
+}
+This is gold for interviews — NL → SQL → result → reasoning.
+
+6️⃣ Debug checklist (fast)
+Problem	Cause	Fix
+Field required (query)	JSON sent instead of query	Use --get --data-urlencode
+Malformed URL	Special chars in DB URL	Use --data-urlencode
+App won’t start	Import error	Check filenames & functions
+SQL fails	Guard blocking	Check sql_guard.py
+
