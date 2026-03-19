@@ -256,6 +256,10 @@ NV-finals
 
 ---
 
+# Demo
+
+ [![Watch the demo](https://img.youtube.com/vi/-UlHOJwNTps/1.jpg)](https://youtu.be/-UlHOJwNTps)
+
 # Overview
 
 InsightSQL demonstrates how **local LLMs can be integrated with traditional databases** to create a modern analytics interface.
@@ -264,7 +268,7 @@ The project combines:
 
 * Natural language processing
 * safe SQL generation
-* real-time data retrieval
+* real-time data retrieval                                      
 * a modern full-stack architecture
 
 to enable **intuitive exploration of structured data**. 📊
